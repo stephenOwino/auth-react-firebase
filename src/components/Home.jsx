@@ -1,34 +1,35 @@
-import React from 'react'
+import React from "react";
 
-import { getAuth } from 'firebase/auth'
-import { useNavigate } from 'react-router-dom'
-
+import { getAuth } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
-  console.log(getAuth())
-  const navigate = useNavigate();
+	console.log(getAuth());
+	const navigate = useNavigate();
 
-  const auth = getAuth();
+	const auth = getAuth();
 
-  const logOut = async () =>{
-await auth.signOut();
-navigate('/')
-  }
-  return (
-    <>
-    <div className="container text-center">
-    <h1>Welcome To HomePage...</h1>
+	const logOut = async () => {
+		await auth.signOut();
+		navigate("/");
+	};
+	return (
+		<>
+			<div className='container text-center'>
+				<h1>Welcome to firebase auth page😂</h1>
 
-    <div className='my-5'>
-      <h1>{auth.currentUser.displayName}</h1>
-      <h2>{auth.currentUser.email}</h2>
-      <img src={auth.currentUser.photoURL} alt="" />
-    </div>
+				<div className='my-5'>
+					<h1>{auth.currentUser.displayName}</h1>
+					<h2>{auth.currentUser.email}</h2>
+					<img src={auth.currentUser.photoURL} alt='' />
+				</div>
 
-    <button className="btn btn-warning" onClick={logOut}>LogOut</button>
-    </div>
-    </>
-  )
-}
+				<button className='btn btn-warning' onClick={logOut}>
+					LogOut
+				</button>
+			</div>
+		</>
+	);
+};
 
-export default Home
+export default Home;
